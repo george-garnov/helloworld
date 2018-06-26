@@ -39,7 +39,7 @@ target_link_libraries(helloworld_cli helloworld)
 #  helloworld
 #)
 target_link_libraries(runTests
-  ${GTEST_LIBRARIES}
+  ${GTEST_BOTH_LIBRARIES}
   helloworld)
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
