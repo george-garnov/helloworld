@@ -6,7 +6,7 @@ before_script:
   - sudo env "PATH=$PATH" cmake CMakeLists.txt
   - sudo make
   - sudo cp *.a /usr/lib # copy or symlink libgtest.a and libgtest_main.a to your /usr/lib folder
-  - cd "$TRAVIS_BUILD_DIR"
+  - cd "${TRAVIS_BUILD_DIR}"
 script:
   - cmake .
   - cmake --build .
