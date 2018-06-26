@@ -3,10 +3,10 @@ before_script:
 #  - sudo apt-get install libboost-test-dev -y
   - sudo apt-get install libgtest-dev # installing the gtest development package
   - sudo apt-get install cmake # install cmake
-  - cd /usr/src/gtest
-  - sudo cmake CMakeLists.txt
-  - sudo make
-  - sudo cp *.a /usr/lib # copy or symlink libgtest.a and libgtest_main.a to your /usr/lib folder
+#  - cd /usr/src/gtest
+#  - sudo cmake CMakeLists.txt
+#  - sudo make
+#  - sudo cp *.a /usr/lib # copy or symlink libgtest.a and libgtest_main.a to your /usr/lib folder
 script:
   - cmake .
   - cmake --build .
