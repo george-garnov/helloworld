@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
-include(gtest.cmake)
+
 #find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-# Locate GTest
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
@@ -54,4 +53,4 @@ include (CPack)
 
 enable_testing()
 
-add_test(test_version_valid test_main_cli)
+add_test(test_version_valid runTests)
