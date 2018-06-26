@@ -28,6 +28,9 @@ set_target_properties(helloworld_cli runTests PROPERTIES
 #  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 #  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 #)
+set_target_properties(runTests PROPERTIES
+  INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
+)
 
 target_link_libraries(helloworld_cli helloworld)
 
