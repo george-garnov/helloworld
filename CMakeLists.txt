@@ -4,17 +4,17 @@ project(helloworld VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 configure_file(version.h.in version.h)
 
-add_executable(helloworld_cli main.cpp)
+add_executable(helloworld main.cpp)
 
-add_library(helloworld lib.cpp)
+add_library(version_lib lib.cpp)
 
-set_target_properties(helloworld_cli PROPERTIES
+set_target_properties(helloworld PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-target_link_libraries(helloworld_cli helloworld)
+target_link_libraries(helloworld version_lib)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
@@ -22,20 +22,20 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIR})
 
-add_executable(runTests tests.cpp)
-target_link_libraries(runTests
+add_executable(version_test tests.cpp)
+target_link_libraries(version_test
   ${GTEST_BOTH_LIBRARIES}
-  helloworld
+  version_lib
   pthread
 )
 
-set_target_properties(helloworld_cli runTests PROPERTIES
+set_target_properties(helloworld version_test PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(runTests PROPERTIES
+set_target_properties(version_test PROPERTIES
   INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
 )
 
@@ -49,5 +49,5 @@ set(CPACK_PACKAGE_CONTACT george.garnov@gmail.com)
 
 include (CPack)
 
-add_test(test_version_valid runTests)
+add_test(test_version_valid version_test)
 
