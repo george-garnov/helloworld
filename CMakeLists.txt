@@ -8,6 +8,12 @@ add_executable(helloworld_cli main.cpp)
 
 add_library(helloworld lib.cpp)
 
+set_target_properties(helloworld_cli PROPERTIES
+  CXX_STANDARD 14
+  CXX_STANDARD_REQUIRED ON
+  COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+)
+
 target_link_libraries(helloworld_cli helloworld)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
