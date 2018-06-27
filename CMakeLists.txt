@@ -2,19 +2,26 @@ cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
-enable_testing()
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIR})
-
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
 
 add_library(helloworld lib.cpp)
 
-#add_executable(test_main_cli test_main.cpp)
-# Link runTests with what we want to test and the GTest and pthread library
+target_link_libraries(helloworld_cli helloworld)
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
+enable_testing()
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIR})
+
 add_executable(runTests tests.cpp)
+target_link_libraries(runTests
+  ${GTEST_BOTH_LIBRARIES}
+  helloworld
+  pthread
+)
 
 set_target_properties(helloworld_cli runTests PROPERTIES
   CXX_STANDARD 14
@@ -25,14 +32,6 @@ set_target_properties(helloworld_cli runTests PROPERTIES
 set_target_properties(runTests PROPERTIES
   INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
 )
-
-target_link_libraries(helloworld_cli helloworld)
-
-target_link_libraries(runTests
-  ${GTEST_BOTH_LIBRARIES}
-  helloworld)
-
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
@@ -45,3 +44,4 @@ set(CPACK_PACKAGE_CONTACT george.garnov@gmail.com)
 include (CPack)
 
 add_test(test_version_valid runTests)
+
