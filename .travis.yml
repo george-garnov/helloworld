@@ -10,7 +10,7 @@ before_script:
 script:
   - cmake .
   - cmake --build .
-  - ctest --build . --target test . --gtest_output="xml:out.xml"
+  - ctest --build . --target test
   - cmake --build . --target package
 #deploy:
   #provider: script
