@@ -49,5 +49,5 @@ set(CPACK_PACKAGE_CONTACT george.garnov@gmail.com)
 
 include (CPack)
 
-add_test(test_version_valid version_test)
+add_test(my_test version_test)
 
