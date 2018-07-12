@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 
-TEST(myTest, Test1) { 
-    ASSERT_EQ(1000, 6*6+8*8);
+TEST(myTest1, Test1) { 
+    ASSERT_EQ(1000, 6*6+8*8) << "test_1";
 }
 
-TEST(myTest, Test2) {
-    ASSERT_FALSE(true!=false);
+TEST(myTest2, Test2) {
+    ASSERT_FALSE(true!=false) << "test_2";
 }
 
 int main(int argc, char **argv) {
