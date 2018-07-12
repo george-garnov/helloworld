@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 TEST(myTest1, Test1) { 
-    ASSERT_EQ(1000, 6*6+8*8) << "test_1";
+    ASSERT_EQ(100, 6*6+8*8) << "test_1";
 }
 
 TEST(myTest2, Test2) {
