@@ -5,7 +5,7 @@ TEST(myTest, Test1) {
 }
 
 TEST(myTest, Test2) {
-    ASSERT_FALSE(true==false);
+    ASSERT_FALSE(true!=false);
 }
 
 int main(int argc, char **argv) {
